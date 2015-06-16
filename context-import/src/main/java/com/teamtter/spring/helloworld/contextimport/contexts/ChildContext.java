@@ -1,19 +1,18 @@
-package com.teamtter.spring.helloworld.contextimport;
+package com.teamtter.spring.helloworld.contextimport.contexts;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.teamtter.Toto1;
-import com.teamtter.Toto2;
+import com.teamtter.spring.helloworld.contextimport.service.ARandomModule;
 
 @Import(MainContext.class)
 @Configuration
 public class ChildContext {
 
 	@Bean
-	public Toto1 toto() {
-		return new Toto2();
+	public ARandomModule ARandomModule() {
+		return new ARandomModule();
 	}
-	
+
 }

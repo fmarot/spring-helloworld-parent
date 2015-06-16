@@ -1,4 +1,4 @@
-package com.teamtter.spring.helloworld.contextimport;
+package com.teamtter.spring.helloworld.contextimport.contexts;
 
 import org.springframework.context.annotation.Configuration;
 
