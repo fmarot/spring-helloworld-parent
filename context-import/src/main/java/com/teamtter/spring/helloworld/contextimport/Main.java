@@ -1,11 +1,12 @@
 package com.teamtter.spring.helloworld.contextimport;
 
 
+import java.util.Map;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.teamtter.spring.helloworld.contextimport.contexts.ChildContext;
-import com.teamtter.spring.helloworld.contextimport.contexts.MainContext;
-import com.teamtter.spring.helloworld.contextimport.service.DataManager;
+import com.teamtter.spring.helloworld.contextimport.service.Module;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,13 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 public class Main {
 
 	private void start() throws Exception {
-		AnnotationConfigApplicationContext mainContext = new AnnotationConfigApplicationContext(MainContext.class);
-		
 		AnnotationConfigApplicationContext childContext = new AnnotationConfigApplicationContext(ChildContext.class);
-		
-		DataManager bean = childContext.getBean(DataManager.class);
-		
-		log.warn("{}", bean.toString());
+		Map<String, Module> allModuleBeans = childContext.getBeansOfType(Module.class);
+		for (Module module : allModuleBeans.values()) {
+			log.info(module.toString());
+		}
 	}
 
 	public static void main(String[] args) throws Exception {
